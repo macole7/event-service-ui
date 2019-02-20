@@ -1,0 +1,51 @@
+{{eventForm.value | json}}
+<div class="form">
+  <h2 class="header">Add event</h2>
+  <form #eventForm="ngForm" (ngSubmit)="save(eventForm.value)">
+    <div class="form-group row">
+      <label for="text-input" class="col-2 col-form-label">Name:</label>
+      <div class="col-10">
+        <input [(ngModel)]="event.name" name="name" #name="ngModel"
+        class="form-control" type="text" id="text-input" required minlength="3">
+        <div *ngIf="!name.valid && name.dirty">Name Required</div>
+        <div *ngIf="name.errors && name.errors.minlength">Event name should have at least 3 characters</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="date-input" class="col-2 col-form-label">Date</label>
+      <div class="col-10">
+        <input [(ngModel)]="event.date" name="date" #date="ngModel" class="form-control" type="date" id="date-input" required>
+        <div *ngIf="!date.valid && date.dirty">Date Required</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="text-input" class="col-2 col-form-label">City:</label>
+      <div class="col-10">
+        <input [(ngModel)]="event.address" name="address" #address="ngModel"
+        class="form-control" type="text" id="text-input" required>
+        <div *ngIf="!address.valid && address.dirty">City Required</div>
+      </div>
+    </div>
+    <h3>Organizer</h3>
+    <fieldset ngModelGroup="organizer">
+      <div class="form-group row">
+        <label for="text-input" class="col-2 col-form-label">Name:</label>
+        <div class="col-10">
+          <input [(ngModel)]="event.organizer" name="name" #name="ngModel"
+          class="form-control" type="text" id="text-input" required>
+          <div *ngIf="!name.valid && name.dirty">Name Required</div>
+        </div>
+      </div>
+      <div class="form-group row">
+      <label for="email-input" class="col-2 col-form-label">Email:</label>
+      <div class="col-10">
+        <input [(ngModel)]="event.email" name="email" #email="ngModel" class="form-control" type="email" id="email-input"
+          email required>
+        <div *ngIf="!email.valid && email.dirty">Email Required</div>
+        <div *ngIf="email.errors && email.errors.email && email.dirty">Incorrect Email Format</div>
+      </div>
+    </div>
+  </fieldset>
+    <button mat-stroked-button color="primary" [disabled]="!eventForm.valid">Add Event!</button>
+  </form>
+</div>

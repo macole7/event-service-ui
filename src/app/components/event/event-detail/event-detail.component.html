@@ -1,0 +1,34 @@
+<div class="content" *ngIf="event">
+  <h2>Detail of {{event.name}} </h2>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Id: {{event.id}}</li>
+    <li class="list-group-item">Name: {{event.name}}</li>
+    <li class="list-group-item">Address: {{event.address}}</li>
+    <li class="list-group-item">Date: {{event.date}}</li>
+    <li class="list-group-item">Organizer name: {{event.organizer.name}}</li>
+    <h2>Assigned Users</h2>
+    <li class="list-group-item" *ngFor="let user of event.users">User name: {{user.username}} </li>
+  </ul>
+  <div class="input-group" >
+    <select [(ngModel)]="user" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+      <option selected>Choose..</option>
+      <option *ngFor="let user of users" [ngValue]="user">{{user.username}}</option>
+    </select>
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="button" (click)="addUser(user.id, event)"  [routerLink]="['/events', event.id]">Add User</button>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="panel-footer">
+      <a class="btn btn-primary" [routerLink]="['/events']" routerLinkActive="router-link-active">Add Comment</a>
+    </div>
+    <div class="panel-footer">
+      <a class="btn btn-primary" [routerLink]="['/events']" routerLinkActive="router-link-active">Update Event</a>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <a class="btn btn-danger" [routerLink]="['/events']" routerLinkActive="router-link-active">Back to Events</a>
+  </div>
+</div>
+
+

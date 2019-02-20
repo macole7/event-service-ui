@@ -1,0 +1,19 @@
+
+mat-toolbar {
+  background:  #20313b;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.link1 {
+  margin-left: 8%
+}
+
+.link2 {
+  margin-left: 1%
+}
+
